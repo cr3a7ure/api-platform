@@ -7,7 +7,7 @@ services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
-        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: false # Automatically registers your services as commands, event subscribers, etc.
         public: false       # Allows optimizing the container by removing unused services; this also means
                             # fetching services directly from the container via $container->get() won't work.
                             # The best practice is to be explicit about your dependencies anyway.
@@ -26,3 +26,13 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    # attraction.search_filter:
+    #     parent:    "api_platform.doctrine.orm.search_filter"
+    #     arguments: [ { addressLocality: "partial", geo.latitude: "partial", geo.longitude: "partial"  } ]
+    #     tags:      [ { name: 'api_platform.filter', id: 'attraction.search' } ]
+
+    touristAttraction.collection_data_provider:
+        class: 'App\DataProvider\TouristAttractionCollectionDataProvider'
+        arguments: ["@request_stack","@doctrine", "%amadeus_key%"]
+        tags:
+            -  { name: 'api_platform.collection_data_provider', priority: 2 }

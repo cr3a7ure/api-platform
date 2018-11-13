@@ -1,0 +1,35 @@
+# app/config/schema.yml
+# Geo-API
+annotationGenerators:
+    - ApiPlatform\SchemaGenerator\AnnotationGenerator\PhpDocAnnotationGenerator
+    - ApiPlatform\SchemaGenerator\AnnotationGenerator\DoctrineOrmAnnotationGenerator
+    - ApiPlatform\SchemaGenerator\AnnotationGenerator\ConstraintAnnotationGenerator
+    - ApiPlatform\SchemaGenerator\AnnotationGenerator\ApiPlatformCoreAnnotationGenerator
+
+types: # The list of type to generated (a PHP entity class by type will be generated)
+
+  PostalAddress:
+    parent: false
+    properties:
+      addressCountry:
+        range: Text
+      addressLocality: ~
+      addressRegion: ~
+      postalCode: ~
+      streetAddress: ~
+  GeoCoordinates:
+    parent: false
+    properties:
+      latitude: ~
+      longitude: ~
+  TouristAttraction:
+    parent: false
+    properties:
+      name: ~
+      description: ~
+      url: ~
+      hasMap: ~
+      geo: {range: GeoCoordinates}
+      # photo: ~
+      image: ~
+

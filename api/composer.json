@@ -4,8 +4,9 @@
     "require": {
         "php": "^7.1.3",
         "ext-iconv": "*",
-        "cr3a7ure/api-pack": "*",
+        "api-platform/api-pack": "^1.1",
         "guzzlehttp/guzzle": "^6.3",
+        "symfony/apache-pack": "^1.0",
         "symfony/console": "^4.0",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.0",
@@ -13,6 +14,7 @@
     },
     "require-dev": {
         "api-platform/schema-generator": "^2.1",
+        "symfony/dotenv": "^4.0",
         "symfony/profiler-pack": "^1.0"
     },
     "config": {
